@@ -4,6 +4,7 @@ import cleancode.studycafe.asis.model.StudyCafeLockerPass;
 import cleancode.studycafe.asis.model.StudyCafePass;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 public class OutputHandler {
 

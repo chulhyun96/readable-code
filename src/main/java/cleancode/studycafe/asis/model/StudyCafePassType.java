@@ -8,6 +8,13 @@ public enum StudyCafePassType {
 
     private final String description;
 
+    @Override
+    public String toString() {
+        return "StudyCafePassType{" +
+                "description='" + description + '\'' +
+                '}';
+    }
+
     StudyCafePassType(String description) {
         this.description = description;
     }

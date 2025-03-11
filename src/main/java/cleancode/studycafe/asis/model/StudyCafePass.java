@@ -1,5 +1,6 @@
 package cleancode.studycafe.asis.model;
 
+
 public class StudyCafePass {
 
     private final StudyCafePassType passType;
@@ -12,6 +13,16 @@ public class StudyCafePass {
         this.duration = duration;
         this.price = price;
         this.discountRate = discountRate;
+    }
+
+    @Override
+    public String toString() {
+        return "StudyCafePass{" +
+                "passType=" + passType +
+                ", duration=" + duration +
+                ", price=" + price +
+                ", discountRate=" + discountRate +
+                '}';
     }
 
     public static StudyCafePass of(StudyCafePassType passType, int duration, int price, double discountRate) {

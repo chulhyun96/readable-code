@@ -22,10 +22,9 @@ public class StudyCafePassMachine {
 
             outputHandler.askPassTypeSelection();
             StudyCafePassType studyCafePassType = inputHandler.getPassTypeSelectingUserAction();
-
             if (studyCafePassType == StudyCafePassType.HOURLY) {
                 StudyCafeFileHandler studyCafeFileHandler = new StudyCafeFileHandler();
-                List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses();
+                List<StudyCafePass> studyCafePasses = studyCafeFileHandler.readStudyCafePasses(); // 모든 정보를 다 끌고옴
                 List<StudyCafePass> hourlyPasses = studyCafePasses.stream()
                     .filter(studyCafePass -> studyCafePass.getPassType() == StudyCafePassType.HOURLY)
                     .toList();
