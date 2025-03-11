@@ -1,7 +1,7 @@
 package cleancode.test.asis.service;
 
 import cleancode.test.asis.model.StudyCafeLockerPass;
-import cleancode.test.asis.model.StudyCafePass;
+import cleancode.test.asis.model.StudyCafeUsingPass;
 import cleancode.test.asis.model.StudyCafePassType;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class StudyCafeLockerPassService {
         this.lockerPasses = lockerPasses;
     }
 
-    public Optional<StudyCafeLockerPass> findLockerPassBy(StudyCafePass selectedPass) {
+    public Optional<StudyCafeLockerPass> findLockerPassBy(StudyCafeUsingPass selectedPass) {
         if (selectedPass.isEqualTo(StudyCafePassType.FIXED)) {
             return this.lockerPasses.stream()
                     .filter(lockerPass -> lockerPass.isCompatibleWith(selectedPass))
