@@ -12,8 +12,11 @@ import cleancode.test.asis.service.provider.BasicUsingPassProvider;
 import cleancode.test.asis.service.provider.LockerPassProvider;
 
 import java.util.List;
+import java.util.Scanner;
 
 public class StudyCafePassMachine {
+
+    private static final Scanner SCANNER = new Scanner(System.in);
 
     private final InputHandler inputHandler = new InputHandler();
     private final OutputHandler outputHandler = new OutputHandler();
@@ -37,8 +40,8 @@ public class StudyCafePassMachine {
             outputHandler.showWelcomeMessage();
             outputHandler.showAnnouncement();
 
-            StudyCafePassType selectedPassType = selectPassType();
-            StudyCafeUsingPass selectedPass = selectPass(selectedPassType);
+            StudyCafePassType selectedPassType = selectPassType(SCANNER.nextLine());
+            StudyCafeUsingPass selectedPass = selectPass(selectedPassType, SCANNER.nextLine());
             handleLockerPass(selectedPass);
 
         } catch (AppException e) {
@@ -48,22 +51,22 @@ public class StudyCafePassMachine {
         }
     }
 
-    private StudyCafeUsingPass selectPass(StudyCafePassType passType) {
+    private StudyCafeUsingPass selectPass(StudyCafePassType passType, String input) {
         List<StudyCafeUsingPass> passes = passService.getPasses(passType);
         outputHandler.showPassListForSelection(passes);
 
-        String userInput = inputHandler.getUserAction();
+        String userInput = inputHandler.getUserAction(input);
         return passService.getPass(userInput, passes);
     }
 
     private boolean selectLockerOption(StudyCafeLockerPass lockerPass) {
         outputHandler.askLockerPass(lockerPass);
-        return inputHandler.getLockerSelection();
+        return inputHandler.getLockerSelection(SCANNER.nextLine());
     }
 
-    private StudyCafePassType selectPassType() {
+    private StudyCafePassType selectPassType(String input) {
         outputHandler.askPassTypeSelection();
-        String userInput = inputHandler.getUserAction();
+        String userInput = inputHandler.getUserAction(input);
         return StudyCafePassType.from(userInput);
     }
 
