@@ -1,4 +1,9 @@
 package cleancode.test.asis.service.provider;
 
-public class LockerPassProvider {
+import cleancode.test.asis.model.StudyCafeLockerPass;
+
+import java.util.List;
+
+public interface LockerPassProvider {
+    List<StudyCafeLockerPass> getStudyCafeLockerPass();
 }
