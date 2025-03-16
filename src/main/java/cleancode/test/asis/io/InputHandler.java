@@ -1,18 +1,14 @@
 package cleancode.test.asis.io;
 
-import java.util.Scanner;
-
 public class InputHandler {
 
-    private static final Scanner SCANNER = new Scanner(System.in);
     private static final String LOCKER_OPTION = "1";
 
-    public String getUserAction() {
-        return SCANNER.nextLine();
+    public String getUserAction(String input) {
+        return input;
     }
 
-    public boolean getLockerSelection() {
-        String userInput = SCANNER.nextLine();
-        return LOCKER_OPTION.equals(userInput);
+    public boolean getLockerSelection(String input) {
+        return LOCKER_OPTION.equals(input);
     }
 }
