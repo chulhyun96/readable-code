@@ -40,8 +40,8 @@ public class StudyCafePassMachine {
             outputHandler.showWelcomeMessage();
             outputHandler.showAnnouncement();
 
-            StudyCafePassType selectedPassType = selectPassType(SCANNER.nextLine());
-            StudyCafeUsingPass selectedPass = selectPass(selectedPassType, SCANNER.nextLine());
+            StudyCafePassType selectedPassType = selectPassType();
+            StudyCafeUsingPass selectedPass = selectPass(selectedPassType);
             handleLockerPass(selectedPass);
 
         } catch (AppException e) {
@@ -51,22 +51,22 @@ public class StudyCafePassMachine {
         }
     }
 
-    private StudyCafeUsingPass selectPass(StudyCafePassType passType, String input) {
+    private StudyCafeUsingPass selectPass(StudyCafePassType passType) {
         List<StudyCafeUsingPass> passes = passService.getPasses(passType);
         outputHandler.showPassListForSelection(passes);
 
-        String userInput = inputHandler.getUserAction(input);
+        String userInput = inputHandler.getUserAction();
         return passService.getPass(userInput, passes);
     }
 
     private boolean selectLockerOption(StudyCafeLockerPass lockerPass) {
         outputHandler.askLockerPass(lockerPass);
-        return inputHandler.getLockerSelection(SCANNER.nextLine());
+        return inputHandler.getLockerSelection(inputHandler.getUserAction());
     }
 
-    private StudyCafePassType selectPassType(String input) {
+    private StudyCafePassType selectPassType() {
         outputHandler.askPassTypeSelection();
-        String userInput = inputHandler.getUserAction(input);
+        String userInput = inputHandler.getUserAction();
         return StudyCafePassType.from(userInput);
     }
 

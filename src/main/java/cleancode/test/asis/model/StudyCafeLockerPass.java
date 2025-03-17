@@ -21,7 +21,8 @@ public class StudyCafeLockerPass implements StudyCafePass {
     }
 
     public boolean isCompatibleWith(StudyCafeUsingPass pass) {
-        return Objects.equals(this.passType, pass.getPassType()) && Objects.equals(this.duration, pass.getDuration());
+        return Objects.equals(this.passType, pass.getPassType()) &&
+                Objects.equals(this.duration, pass.getDuration());
     }
 
     public int getPrice() {
